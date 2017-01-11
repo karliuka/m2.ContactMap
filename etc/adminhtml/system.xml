@@ -55,7 +55,13 @@
                     <depends>
                         <field id="enabled">1</field>
                     </depends>                      
-                </field>                                             
+                </field>
+                <field id="marker" translate="label comment" type="image" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Marker Icon</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">contact/map/marker</upload_dir>
+                    <base_url type="media" scope_info="1">contact/map/marker</base_url>
+                </field>				
             </group>
         </section>
     </system>
