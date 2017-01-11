@@ -54,6 +54,16 @@ class Map extends Template
     }
     
     /**
+     * Check ContactMap functionality should be enabled
+     *
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->_helper->isEnabled();
+    } 
+    
+    /**
      * Retrieve map zoom
      *
      * @return string

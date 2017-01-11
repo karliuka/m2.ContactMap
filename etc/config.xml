@@ -27,6 +27,7 @@
         <contact>
             <map>
                 <enabled>1</enabled>
+				<api_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
                 <zoom>17</zoom>
             </map>
         </contact>

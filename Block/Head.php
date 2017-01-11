@@ -63,7 +63,17 @@ class Head extends Template
         $this->_resolver = $resolver;
         parent::__construct($context, $data);
     }
-
+    
+    /**
+     * Check ContactMap functionality should be enabled
+     *
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->_helper->isEnabled();
+    }
+	
     /**
      * Retrieve map api key
      *

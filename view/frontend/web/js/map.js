@@ -4,7 +4,13 @@ function ($) {
 	return {
         config:{
             mapBoxClass: 'google-map',
-            zoom:null
+            zoom:null,
+			disableDefaultUI: true,
+			zoomControl: false,
+			mapTypeControl: false,
+			scaleControl: false,
+			streetViewControl: false,
+			rotateControl: false			
         },
         
 		locator:[],	
@@ -23,34 +29,60 @@ function ($) {
         initMap:function(key, mapBox){
 			var id = this.config.mapBoxClass + '-' + key;
 			$(mapBox).attr('id', id);
+			
 			this.locator[key] = {
 				bounds: new google.maps.LatLngBounds(),
 				markers:[],
-				map:  new google.maps.Map(document.getElementById(id), {
-					disableDefaultUI: true,
-					zoomControl: false,
-					mapTypeControl: false,
-					scaleControl: false,
-					streetViewControl: false,
-					rotateControl: false
+				map: new google.maps.Map(document.getElementById(id), {
+					disableDefaultUI: this.config.disableDefaultUI,
+					zoomControl: this.config.zoomControl,
+					mapTypeControl: this.config.mapTypeControl,
+					scaleControl: this.config.scaleControl,
+					streetViewControl: this.config.streetViewControl,
+					rotateControl: this.config.rotateControl
 				})
 			};
 			var json = this.base64Decode($(mapBox).data('marker'));
-			var collection = $.parseJSON(json);			
+			var collection = $.parseJSON(json);	
+	
 			for (var i = 0; i < collection.length; i++) {
-				var position = new google.maps.LatLng(Number(collection[i].lat), Number(collection[i].lng));	
+				if (collection[i].lat === null || 
+					collection[i].lng === null) {
+					continue;
+				}
+				var position = new google.maps.LatLng(
+					Number(collection[i].lat), 
+					Number(collection[i].lng)
+				);	
 				this.locator[key].bounds.extend(position);
 				this.addMarker(position, key);
-			}				
+			}
+			
+			if (this.locator[key].markers.length < 1) {
+				this.locator[key].map.setZoom(1);
+				this.locator[key].map.setCenter({lat:0, lng:0});	
+				return;
+			}
+			
 			this.setMarker(key);			
 			if (this.config.zoom){
 				this.locator[key].map.setZoom(this.config.zoom);
 				this.locator[key].map.setCenter(this.locator[key].bounds.getCenter());  
 			}else{
-				this.locator[key].map.setCenter(this.locator[key].bounds.getCenter(), this.locator[key].map.fitBounds(this.locator[key].bounds)); 
+				this.locator[key].map.setCenter(
+					this.locator[key].bounds.getCenter(), 
+					this.locator[key].map.fitBounds(this.locator[key].bounds)
+				); 
 			}  			
         },
-        
+		
+		/**
+		 * Adds a marker to the map.
+		 * 
+		 * @param google.maps.LatLng position
+		 * @param integer key
+		 * @return void	 
+		 */	        
 		addMarker: function(position, key){
 			var marker = new google.maps.Marker({
 				position: position,

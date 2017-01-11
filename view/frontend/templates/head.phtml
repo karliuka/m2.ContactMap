@@ -20,4 +20,6 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 ?>
+<?php if ($block->isEnabled()) : ?>
 <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $block->getApiKey() ?>&language=<?php echo $block->getLocale() ?>" async defer></script>
+<?php endif ?>

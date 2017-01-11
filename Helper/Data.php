@@ -62,7 +62,7 @@ class Data extends AbstractHelper
      */
     public function isEnabled()
     {
-        return $this->_getConfig(self::XML_CONTACTMAP_ENABLED);
+        return $this->_getConfig(self::XML_CONTACTMAP_ENABLED) && $this->getApiKey();
     } 
     
     /**
