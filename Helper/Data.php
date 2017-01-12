@@ -54,6 +54,10 @@ class Data extends AbstractHelper
      */
     const XML_CONTACTMAP_API_KEY = 'contact/map/api_key';
 
+    /**
+     * Marker image config path
+     */
+    const XML_CONTACTMAP_MARKER = 'contact/map/marker';
  	
     /**
      * Check ContactMap functionality should be enabled
@@ -63,6 +67,16 @@ class Data extends AbstractHelper
     public function isEnabled()
     {
         return $this->_getConfig(self::XML_CONTACTMAP_ENABLED) && $this->getApiKey();
+    } 
+    
+    /**
+     * Retrieve marker icon
+     *
+     * @return string
+     */
+    public function getMarkerIcon()
+    {
+		return $this->_getConfig(self::XML_CONTACTMAP_MARKER);
     } 
     
     /**

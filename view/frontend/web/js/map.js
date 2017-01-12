@@ -44,7 +44,7 @@ function ($) {
 			};
 			var json = this.base64Decode($(mapBox).data('marker'));
 			var collection = $.parseJSON(json);	
-	
+
 			for (var i = 0; i < collection.length; i++) {
 				if (collection[i].lat === null || 
 					collection[i].lng === null) {
@@ -55,7 +55,7 @@ function ($) {
 					Number(collection[i].lng)
 				);	
 				this.locator[key].bounds.extend(position);
-				this.addMarker(position, key);
+				this.addMarker(position, key, collection[i].icon);
 			}
 			
 			if (this.locator[key].markers.length < 1) {
@@ -81,12 +81,14 @@ function ($) {
 		 * 
 		 * @param google.maps.LatLng position
 		 * @param integer key
+		 * @param string icon		 
 		 * @return void	 
 		 */	        
-		addMarker: function(position, key){
+		addMarker: function(position, key, icon){
 			var marker = new google.maps.Marker({
 				position: position,
-				draggable:false
+				draggable: false,
+				icon: icon
 			});
 			this.locator[key].markers.push(marker);
 		},
