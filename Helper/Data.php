@@ -15,37 +15,37 @@ use Magento\Framework\App\Helper\AbstractHelper;
 class Data extends AbstractHelper
 {
     /**
-     * Enabled config path
+     * Enabled Config Path
      */
     const XML_CONTACTMAP_ENABLED = 'contact/map/enabled';
     	
     /**
-     * Latitude config path
+     * Latitude Config Path
      */
     const XML_CONTACTMAP_LATITUDE = 'contact/map/latitude';
 
     /**
-     * Longitude config path
+     * Longitude Config Path
      */
     const XML_CONTACTMAP_LONGITUDE = 'contact/map/longitude';
 
     /**
-     * Zoom Level config path
+     * Zoom Level Config Path
      */
     const XML_CONTACTMAP_ZOOM = 'contact/map/zoom';
  
     /**
-     * Api key config path
+     * Api Key Config Path
      */
     const XML_CONTACTMAP_API_KEY = 'contact/map/api_key';
 
     /**
-     * Marker image config path
+     * Marker Image Config Path
      */
     const XML_CONTACTMAP_MARKER = 'contact/map/marker';
  	
     /**
-     * Check ContactMap functionality should be enabled
+     * Check ContactMap Functionality Should Be Enabled
      *
      * @return bool
      */
@@ -55,7 +55,7 @@ class Data extends AbstractHelper
     } 
     
     /**
-     * Retrieve marker icon
+     * Retrieve Marker Icon
      *
      * @return string
      */
@@ -65,7 +65,7 @@ class Data extends AbstractHelper
     } 
     
     /**
-     * Retrieve map zoom
+     * Retrieve Map Zoom
      *
      * @return string
      */
@@ -75,7 +75,7 @@ class Data extends AbstractHelper
     } 
     
     /**
-     * Retrieve map api key
+     * Retrieve Map Api Key
      *
      * @return string
      */
@@ -99,7 +99,7 @@ class Data extends AbstractHelper
     } 
     
     /**
-     * Retrieve store configuration data
+     * Retrieve Store Configuration Data
      *
      * @param   string $path
      * @return  string|null
