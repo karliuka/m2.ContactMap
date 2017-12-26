@@ -13,29 +13,31 @@ use Magento\MediaStorage\Helper\File\Storage\Database as StorageHelper;
 use Faonni\ContactMap\Helper\Data as ContactMapHelper;
 
 /**
- * ContactMap Map Block
+ * Map Block
  */
 class Map extends Template
 {
     /**
-     * Helper instance
+     * Helper
      *
      * @var \Faonni\ContactMap\Helper\Data
      */
     protected $_helper; 
 	
     /**
+     * Media Storage Helper
+     *
      * @var \Magento\MediaStorage\Helper\File\Storage\Database
      */
     protected $_fileStorageHelper;
     
     /**
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Magento\MediaStorage\Helper\File\Storage\Database $fileStorageHelper	 
-     * @param \Faonni\ContactMap\Helper\Data $helper
+     * Initialize Block
+     *
+     * @param Context $context
+     * @param StorageHelper $fileStorageHelper	 
+     * @param ContactMapHelper $helper
      * @param array $data
-     * 
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
 		Context $context,
@@ -49,7 +51,7 @@ class Map extends Template
     }
     
     /**
-     * Check ContactMap functionality should be enabled
+     * Check ContactMap Functionality Should Be Enabled
      *
      * @return bool
      */
@@ -59,7 +61,7 @@ class Map extends Template
     } 
     
     /**
-     * Retrieve marker icon
+     * Retrieve Marker Icon
      *
      * @return string
      */
@@ -69,7 +71,7 @@ class Map extends Template
     } 
     
     /**
-     * Retrieve marker icon src
+     * Retrieve Marker Icon Url
      *
      * @return string
      */
@@ -87,7 +89,7 @@ class Map extends Template
     }
     
     /**
-     * Retrieve map zoom
+     * Retrieve Map Zoom
      *
      * @return string
      */
@@ -97,7 +99,7 @@ class Map extends Template
     } 
             
     /**
-     * Retrieve marker position
+     * Retrieve Marker Position
      *
      * @return array
      */
@@ -110,9 +112,9 @@ class Map extends Template
     }
 	
     /**
-     * If DB file storage is on - find there, otherwise - just file_exists
+     * If Db File Storage Is On - Find There, Otherwise - Just file_exists
      *
-     * @param string $filename relative path
+     * @param string $filename 
      * @return bool
      */
     protected function _isFile($filename)

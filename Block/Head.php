@@ -12,31 +12,31 @@ use Magento\Framework\Locale\ResolverInterface;
 use Faonni\ContactMap\Helper\Data as ContactMapHelper;
 
 /**
- * ContactMap Block Head
+ * Head Block
  */
 class Head extends Template
 {
     /**
-     * Helper instance
+     * Helper
      *
      * @var \Faonni\ContactMap\Helper\Data
      */
     protected $_helper; 
     
     /**
-     * Resolver instance 
+     * Resolver Instance 
      * 
      * @var Magento\Framework\Locale\ResolverInterface
      */
     protected $_resolver;    
     
     /**
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Faonni\ContactMap\Helper\Data $helper
-     * @param \Magento\Framework\Locale\ResolverInterface $resolver
+     * Initialize Block
+     *
+     * @param Context $context
+     * @param ContactMapHelper $helper
+     * @param ResolverInterface $resolver
      * @param array $data
-     * 
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
 		Context $context, 
@@ -46,11 +46,15 @@ class Head extends Template
 	) {
         $this->_helper = $helper;
         $this->_resolver = $resolver;
-        parent::__construct($context, $data);
+        
+        parent::__construct(
+			$context, 
+			$data
+		);
     }
     
     /**
-     * Check ContactMap functionality should be enabled
+     * Check ContactMap Functionality Should Be Enabled
      *
      * @return bool
      */
@@ -60,7 +64,7 @@ class Head extends Template
     }
 	
     /**
-     * Retrieve map api key
+     * Retrieve Map Api Key
      *
      * @return string
      */
@@ -70,7 +74,7 @@ class Head extends Template
     } 
 	
     /**
-     * Return locale code
+     * Return Locale Code
      *
      * @return string
      */

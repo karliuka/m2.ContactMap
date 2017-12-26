@@ -10,7 +10,7 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Helper\AbstractHelper;
 
 /**
- * Faonni ContactMap Data helper
+ * ContactMap Helper
  */
 class Data extends AbstractHelper
 {
@@ -85,7 +85,7 @@ class Data extends AbstractHelper
     } 
             
     /**
-     * Retrieve marker position
+     * Retrieve Marker Position
      *
      * @return array
      */
