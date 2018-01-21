@@ -24,7 +24,7 @@ class Head extends Template
     protected $_helper; 
     
     /**
-     * Resolver Instance 
+     * Locale Resolver
      * 
      * @var Magento\Framework\Locale\ResolverInterface
      */
