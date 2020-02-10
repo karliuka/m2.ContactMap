@@ -19,17 +19,17 @@ class Head extends Template
     /**
      * Helper
      *
-     * @var \Faonni\ContactMap\Helper\Data
+     * @var ContactMapHelper
      */
-    protected $_helper; 
-    
+    protected $helper;
+
     /**
      * Locale Resolver
      * 
-     * @var Magento\Framework\Locale\ResolverInterface
+     * @var ResolverInterface
      */
-    protected $_resolver;    
-    
+    protected $resolver;
+
     /**
      * Initialize Block
      *
@@ -39,20 +39,20 @@ class Head extends Template
      * @param array $data
      */
     public function __construct(
-		Context $context, 
-		ContactMapHelper $helper,
-		ResolverInterface $resolver,
-		array $data = []
-	) {
-        $this->_helper = $helper;
-        $this->_resolver = $resolver;
-        
+        Context $context,
+        ContactMapHelper $helper,
+        ResolverInterface $resolver,
+        array $data = []
+    ) {
+        $this->helper = $helper;
+        $this->resolver = $resolver;
+
         parent::__construct(
-			$context, 
-			$data
-		);
+            $context,
+            $data
+        );
     }
-    
+
     /**
      * Check ContactMap Functionality Should Be Enabled
      *
@@ -60,9 +60,9 @@ class Head extends Template
      */
     public function isEnabled()
     {
-        return $this->_helper->isEnabled();
+        return $this->helper->isEnabled();
     }
-	
+
     /**
      * Retrieve Map Api Key
      *
@@ -70,9 +70,9 @@ class Head extends Template
      */
     public function getApiKey()
     {
-		return $this->_helper->getApiKey();
-    } 
-	
+        return $this->helper->getApiKey();
+    }
+
     /**
      * Return Locale Code
      *
@@ -80,6 +80,6 @@ class Head extends Template
      */
     public function getLocale()
     {
-        return $this->_resolver->getLocale();
-    }    
+        return $this->resolver->getLocale();
+    }
 }

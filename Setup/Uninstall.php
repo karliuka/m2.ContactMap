@@ -19,7 +19,7 @@ class Uninstall implements UninstallInterface
     /**
      * Config Collection Factory
      *
-     * @var \Magento\Config\Model\ResourceModel\Config\Data\CollectionFactory
+     * @var ConfigCollectionFactory
      */
     private $_configCollectionFactory;
 
@@ -29,11 +29,11 @@ class Uninstall implements UninstallInterface
      * @param ConfigCollectionFactory $configCollectionFactory
      */
     public function __construct(
-		ConfigCollectionFactory $configCollectionFactory
-	) {
+        ConfigCollectionFactory $configCollectionFactory
+    ) {
         $this->_configCollectionFactory = $configCollectionFactory;
     }
-    
+
     /**
      * Uninstall DB Schema for a Module ContactMap
      *
@@ -44,7 +44,7 @@ class Uninstall implements UninstallInterface
     public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
-        $this->removeConfig();	
+        $this->removeConfig();
         $setup->endSetup();
     }
 
@@ -57,11 +57,11 @@ class Uninstall implements UninstallInterface
     {
         $path = 'contact/map';
         /** @var \Magento\Config\Model\ResourceModel\Config\Data\Collection $collection */
-        $collection = $this->_configCollectionFactory->create(); 
+        $collection = $this->_configCollectionFactory->create();
         $collection->addPathFilter($path);
 
         foreach ($collection as $config) {
-			$config->delete(); 	
+            $config->delete();
         }
-    }    
+    }
 }

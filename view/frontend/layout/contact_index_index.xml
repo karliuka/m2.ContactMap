@@ -6,12 +6,12 @@
  * See COPYING.txt for license details.
  */
 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-		<referenceContainer name="head.additional">
+        <referenceContainer name="head.additional">
             <block ifconfig="contact/map/enabled" name="contactmap.head" class="Faonni\ContactMap\Block\Head" template="Faonni_ContactMap::head.phtml" />
-        </referenceContainer>		
+        </referenceContainer>
         <referenceContainer name="content">
             <block ifconfig="contact/map/enabled" class="Faonni\ContactMap\Block\Map" name="contactMap" template="Faonni_ContactMap::map.phtml" before="-"/>
         </referenceContainer>

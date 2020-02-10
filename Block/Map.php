@@ -20,36 +20,40 @@ class Map extends Template
     /**
      * Helper
      *
-     * @var \Faonni\ContactMap\Helper\Data
+     * @var ContactMapHelper
      */
-    protected $_helper; 
-	
+    protected $helper;
+
     /**
      * Media Storage Helper
      *
-     * @var \Magento\MediaStorage\Helper\File\Storage\Database
+     * @var StorageHelper
      */
-    protected $_fileStorageHelper;
-    
+    protected $fileStorageHelper;
+
     /**
      * Initialize Block
      *
      * @param Context $context
-     * @param StorageHelper $fileStorageHelper	 
+     * @param StorageHelper $fileStorageHelper
      * @param ContactMapHelper $helper
      * @param array $data
      */
     public function __construct(
-		Context $context,
-		StorageHelper $fileStorageHelper,
-		ContactMapHelper $helper,
-		array $data = []
-	) {
-        $this->_fileStorageHelper = $fileStorageHelper;
-		$this->_helper = $helper;
-        parent::__construct($context, $data);
+        Context $context,
+        StorageHelper $fileStorageHelper,
+        ContactMapHelper $helper,
+        array $data = []
+    ) {
+        $this->fileStorageHelper = $fileStorageHelper;
+        $this->helper = $helper;
+
+        parent::__construct(
+            $context,
+            $data
+        );
     }
-    
+
     /**
      * Check ContactMap Functionality Should Be Enabled
      *
@@ -57,9 +61,9 @@ class Map extends Template
      */
     public function isEnabled()
     {
-        return $this->_helper->isEnabled();
-    } 
-    
+        return $this->helper->isEnabled();
+    }
+
     /**
      * Retrieve Marker Icon
      *
@@ -67,9 +71,9 @@ class Map extends Template
      */
     public function getMarkerIcon()
     {
-		return $this->_helper->getMarkerIcon();
-    } 
-    
+        return $this->helper->getMarkerIcon();
+    }
+
     /**
      * Retrieve Marker Icon Url
      *
@@ -77,17 +81,17 @@ class Map extends Template
      */
     public function getMarkerIconSrc()
     {
-		if ($this->getMarkerIcon()) {
-			$folderName = 'contact/map/marker';
-			$path = $folderName . '/' . $this->getMarkerIcon();
-			if ($this->_isFile($path)) {
-				return $this->_urlBuilder
-					->getBaseUrl(['_type' => UrlInterface::URL_TYPE_MEDIA]) . $path;				
-			}
-		}
-		return null;
+        if ($this->getMarkerIcon()) {
+            $folderName = 'contact/map/marker';
+            $path = $folderName . '/' . $this->getMarkerIcon();
+            if ($this->isFile($path)) {
+                return $this->_urlBuilder
+                    ->getBaseUrl(['_type' => UrlInterface::URL_TYPE_MEDIA]) . $path;
+            }
+        }
+        return null;
     }
-    
+
     /**
      * Retrieve Map Zoom
      *
@@ -95,9 +99,9 @@ class Map extends Template
      */
     public function getZoom()
     {
-		return $this->_helper->getZoom();
-    } 
-            
+        return $this->helper->getZoom();
+    }
+
     /**
      * Retrieve Marker Position
      *
@@ -105,24 +109,24 @@ class Map extends Template
      */
     public function getMarkerPosition()
     {
-		$marker = $this->_helper->getMarkerPosition();
-		$marker['icon'] = $this->getMarkerIconSrc() ?: null;
-		
-		return base64_encode(json_encode([$marker]));
+        $marker = $this->helper->getMarkerPosition();
+        $marker['icon'] = $this->getMarkerIconSrc() ?: null;
+
+        return base64_encode(json_encode([$marker]));
     }
-	
+
     /**
      * If Db File Storage Is On - Find There, Otherwise - Just file_exists
      *
-     * @param string $filename 
+     * @param string $filename
      * @return bool
      */
-    protected function _isFile($filename)
+    protected function isFile($filename)
     {
-        if ($this->_fileStorageHelper->checkDbUsage() && 
-				!$this->getMediaDirectory()->isFile($filename)) {
-            $this->_fileStorageHelper->saveFileToFilesystem($filename);
+        if ($this->fileStorageHelper->checkDbUsage() &&
+                !$this->getMediaDirectory()->isFile($filename)) {
+            $this->fileStorageHelper->saveFileToFilesystem($filename);
         }
         return $this->getMediaDirectory()->isFile($filename);
-    }	
+    }
 }

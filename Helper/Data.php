@@ -18,7 +18,7 @@ class Data extends AbstractHelper
      * Enabled Config Path
      */
     const XML_CONTACTMAP_ENABLED = 'contact/map/enabled';
-    	
+
     /**
      * Latitude Config Path
      */
@@ -33,7 +33,7 @@ class Data extends AbstractHelper
      * Zoom Level Config Path
      */
     const XML_CONTACTMAP_ZOOM = 'contact/map/zoom';
- 
+
     /**
      * Api Key Config Path
      */
@@ -43,7 +43,7 @@ class Data extends AbstractHelper
      * Marker Image Config Path
      */
     const XML_CONTACTMAP_MARKER = 'contact/map/marker';
- 	
+
     /**
      * Check ContactMap Functionality Should Be Enabled
      *
@@ -52,8 +52,8 @@ class Data extends AbstractHelper
     public function isEnabled()
     {
         return $this->_getConfig(self::XML_CONTACTMAP_ENABLED) && $this->getApiKey();
-    } 
-    
+    }
+
     /**
      * Retrieve Marker Icon
      *
@@ -61,9 +61,9 @@ class Data extends AbstractHelper
      */
     public function getMarkerIcon()
     {
-		return $this->_getConfig(self::XML_CONTACTMAP_MARKER);
-    } 
-    
+        return $this->_getConfig(self::XML_CONTACTMAP_MARKER);
+    }
+
     /**
      * Retrieve Map Zoom
      *
@@ -71,9 +71,9 @@ class Data extends AbstractHelper
      */
     public function getZoom()
     {
-		return $this->_getConfig(self::XML_CONTACTMAP_ZOOM);
-    } 
-    
+        return $this->_getConfig(self::XML_CONTACTMAP_ZOOM);
+    }
+
     /**
      * Retrieve Map Api Key
      *
@@ -81,9 +81,9 @@ class Data extends AbstractHelper
      */
     public function getApiKey()
     {
-		return $this->_getConfig(self::XML_CONTACTMAP_API_KEY);
-    } 
-            
+        return $this->_getConfig(self::XML_CONTACTMAP_API_KEY);
+    }
+
     /**
      * Retrieve Marker Position
      *
@@ -91,13 +91,13 @@ class Data extends AbstractHelper
      */
     public function getMarkerPosition()
     {
-		$config = [
-			'lat' => $this->_getConfig(self::XML_CONTACTMAP_LATITUDE),
-			'lng' => $this->_getConfig(self::XML_CONTACTMAP_LONGITUDE)
-		];        
+        $config = [
+            'lat' => $this->_getConfig(self::XML_CONTACTMAP_LATITUDE),
+            'lng' => $this->_getConfig(self::XML_CONTACTMAP_LONGITUDE)
+        ];
         return $config;
-    } 
-    
+    }
+
     /**
      * Retrieve Store Configuration Data
      *
@@ -107,5 +107,5 @@ class Data extends AbstractHelper
     protected function _getConfig($path)
     {
         return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE);
-    }      
+    }
 }
