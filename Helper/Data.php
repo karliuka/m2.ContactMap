@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ContactMap\Helper;
@@ -61,7 +61,7 @@ class Data extends AbstractHelper
      */
     public function getMarkerIcon()
     {
-        return $this->_getConfig(self::XML_CONTACTMAP_MARKER);
+        return (string)$this->_getConfig(self::XML_CONTACTMAP_MARKER);
     }
 
     /**
@@ -71,7 +71,7 @@ class Data extends AbstractHelper
      */
     public function getZoom()
     {
-        return $this->_getConfig(self::XML_CONTACTMAP_ZOOM);
+        return (string)$this->_getConfig(self::XML_CONTACTMAP_ZOOM);
     }
 
     /**
@@ -81,7 +81,7 @@ class Data extends AbstractHelper
      */
     public function getApiKey()
     {
-        return $this->_getConfig(self::XML_CONTACTMAP_API_KEY);
+        return (string)$this->_getConfig(self::XML_CONTACTMAP_API_KEY);
     }
 
     /**

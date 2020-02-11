@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ContactMap\Block;
@@ -25,7 +25,7 @@ class Head extends Template
 
     /**
      * Locale Resolver
-     * 
+     *
      * @var ResolverInterface
      */
     protected $resolver;
@@ -74,12 +74,23 @@ class Head extends Template
     }
 
     /**
-     * Return Locale Code
+     * Retrieve Locale Code
      *
      * @return string
      */
     public function getLocale()
     {
         return $this->resolver->getLocale();
+    }
+
+    /**
+     * Retrieve Script Src
+     *
+     * @return string
+     */
+    public function getSrc()
+    {
+        $src = 'https://maps.googleapis.com/maps/api/js?key=%s&language=%s';
+        return sprintf($src, $this->getApiKey(), $this->getLocale());
     }
 }

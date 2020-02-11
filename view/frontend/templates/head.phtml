@@ -1,10 +1,10 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 ?>
-<?php if ($block->isEnabled()) : ?>
-<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $block->getApiKey() ?>&language=<?php echo $block->getLocale() ?>" async defer></script>
+<?php if ($block->isEnabled()): ?>
+<script src="<?= $block->escapeHtml($block->getSrc()) ?>" async defer></script>
 <?php endif ?>

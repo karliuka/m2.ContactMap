@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\ContactMap\Block;
@@ -77,7 +77,7 @@ class Map extends Template
     /**
      * Retrieve Marker Icon Url
      *
-     * @return string
+     * @return string|null
      */
     public function getMarkerIconSrc()
     {
@@ -105,14 +105,14 @@ class Map extends Template
     /**
      * Retrieve Marker Position
      *
-     * @return array
+     * @return string
      */
     public function getMarkerPosition()
     {
         $marker = $this->helper->getMarkerPosition();
         $marker['icon'] = $this->getMarkerIconSrc() ?: null;
 
-        return base64_encode(json_encode([$marker]));
+        return base64_encode((string)json_encode([$marker]));
     }
 
     /**
