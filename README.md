@@ -26,4 +26,3 @@ Extension will assist in adding company or store coordinates with maps directly 
     ```bash
 	php bin/magento setup:upgrade
 	php bin/magento setup:static-content:deploy
-

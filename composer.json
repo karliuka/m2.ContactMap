@@ -3,10 +3,12 @@
     "description": "Extension will assist in adding company or store coordinates with maps directly to the contact us page.",
     "type": "magento2-module",
     "version": "2.0.4",
-    "authors": [{
-        "name": "Karliuka Vitalii",
-        "email": "karliuka.vitalii@gmail.com"
-    }],
+    "authors": [
+        {
+            "name": "Karliuka Vitalii",
+            "email": "karliuka.vitalii@gmail.com"
+        }
+    ],
     "license": [
         "OSL-3.0"
     ],

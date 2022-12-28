@@ -21,14 +21,14 @@ class Head extends Template
      *
      * @var ContactMapHelper
      */
-    protected $helper;
+    private $helper;
 
     /**
      * Locale Resolver
      *
      * @var ResolverInterface
      */
-    protected $resolver;
+    private $resolver;
 
     /**
      * Initialize Block
@@ -36,7 +36,7 @@ class Head extends Template
      * @param Context $context
      * @param ContactMapHelper $helper
      * @param ResolverInterface $resolver
-     * @param array $data
+     * @param mixed[] $data
      */
     public function __construct(
         Context $context,

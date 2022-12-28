@@ -87,7 +87,7 @@ class Data extends AbstractHelper
     /**
      * Retrieve Marker Position
      *
-     * @return array
+     * @return mixed[]
      */
     public function getMarkerPosition()
     {

@@ -43,10 +43,10 @@ function ($) {
                 })
             };
             var json = this.base64Decode($(mapBox).data('marker'));
-            var collection = $.parseJSON(json);	
+            var collection = $.parseJSON(json);
 
             for (var i = 0; i < collection.length; i++) {
-                if (collection[i].lat === null || 
+                if (collection[i].lat === null ||
                     collection[i].lng === null) {
                     continue;
                 }

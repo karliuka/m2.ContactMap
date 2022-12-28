@@ -37,7 +37,7 @@ class Map extends Template
      * @param Context $context
      * @param StorageHelper $fileStorageHelper
      * @param ContactMapHelper $helper
-     * @param array $data
+     * @param mixed[] $data
      */
     public function __construct(
         Context $context,
