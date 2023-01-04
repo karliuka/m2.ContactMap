@@ -5,6 +5,8 @@ function ($) {
         config:{
             mapBoxClass: 'google-map',
             zoom:null,
+            key:null,
+            locale:null,
             disableDefaultUI: true,
             zoomControl: false,
             mapTypeControl: false,
@@ -16,8 +18,28 @@ function ($) {
         locator:[],
 
         init:function(config){
+            var script, scriptTag, src;
+
             this.config = $.extend({}, this.config, config);
-            google.maps.event.addDomListener(window, 'load', this.initMaps.bind(this));
+
+            script = document.createElement('script');
+            scriptTag = document.getElementsByTagName('script')[0];
+
+            script.async = true;
+            script.src = 'https://maps.googleapis.com/maps/api/js?key=' + this.config.key + '&language='  + this.config.locale;
+
+            script.addEventListener('load', this.initMaps.bind(this));
+
+            /*script.addEventListener('load', function () {
+                var map = new google.maps.Map(document.getElementById('contact-map'), {
+                    center: { lat: -34.397, lng: 150.644 },
+                    zoom: 8,
+                });
+            });*/
+
+            scriptTag.parentNode.insertBefore(script, scriptTag);
+
+            //google.maps.event.addDomListener(window, 'load', this.initMaps.bind(this));
         },
 
         initMaps:function(){

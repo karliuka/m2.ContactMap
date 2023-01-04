@@ -11,7 +11,11 @@
     require(
         ['jquery','Faonni_ContactMap/js/map'],
         function($, map){
-            map.init({zoom:<?= $block->escapeHtml($block->getZoom()) ?>});
+            map.init({
+                zoom: <?= $block->escapeHtml($block->getZoom()) ?>,
+                key: '<?= $block->escapeHtml($block->getApiKey()) ?>',
+                locale: '<?= $block->escapeHtml($block->getLocale()) ?>'
+            });
         });
 </script>
 <?php endif ?>
