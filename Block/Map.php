@@ -6,9 +6,10 @@
  */
 namespace Faonni\ContactMap\Block;
 
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
-use Magento\Framework\UrlInterface;
+use Magento\Framework\Locale\ResolverInterface as LocalResolverInterface;
 use Magento\MediaStorage\Helper\File\Storage\Database as StorageHelper;
 use Faonni\ContactMap\Helper\Data as ContactMapHelper;
 
@@ -18,34 +19,38 @@ use Faonni\ContactMap\Helper\Data as ContactMapHelper;
 class Map extends Template
 {
     /**
-     * Helper
-     *
      * @var ContactMapHelper
      */
-    protected $helper;
+    private $helper;
 
     /**
-     * Media Storage Helper
-     *
+     * @var LocalResolverInterface
+     */
+    private $localeResolver;
+
+    /**
      * @var StorageHelper
      */
-    protected $fileStorageHelper;
+    private $fileStorageHelper;
 
     /**
      * Initialize Block
      *
      * @param Context $context
      * @param StorageHelper $fileStorageHelper
+     * @param LocalResolverInterface $localeResolver
      * @param ContactMapHelper $helper
-     * @param array $data
+     * @param mixed[] $data
      */
     public function __construct(
         Context $context,
         StorageHelper $fileStorageHelper,
+        LocalResolverInterface $localeResolver,
         ContactMapHelper $helper,
         array $data = []
     ) {
         $this->fileStorageHelper = $fileStorageHelper;
+        $this->localeResolver = $localeResolver;
         $this->helper = $helper;
 
         parent::__construct(
@@ -62,6 +67,26 @@ class Map extends Template
     public function isEnabled()
     {
         return $this->helper->isEnabled();
+    }
+
+    /**
+     * Retrieve Map Api Key
+     *
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->helper->getApiKey();
+    }
+
+    /**
+     * Retrieve Locale Code
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->localeResolver->getLocale();
     }
 
     /**
@@ -121,7 +146,7 @@ class Map extends Template
      * @param string $filename
      * @return bool
      */
-    protected function isFile($filename)
+    private function isFile($filename)
     {
         if ($this->fileStorageHelper->checkDbUsage() &&
                 !$this->getMediaDirectory()->isFile($filename)) {
